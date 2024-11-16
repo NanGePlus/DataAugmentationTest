@@ -65,6 +65,7 @@ enhanceBasic目录中脚本包含以下功能:
 (4)在原始数据中，补充结束语，如：“就住XXX吧”“祝您入住愉快”           
 打开命令行终端，运行如下命令进行测试                
 cd enhanceBasic                  
+mkdir enhanced_data      
 python enhance.py            
 
 ## 4.2 数据增强处理2
