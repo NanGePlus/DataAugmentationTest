@@ -7,6 +7,9 @@
 (1)对酒店设施的描述进行口语化重写             
 (2)补充一定比例的多轮问答和结束语对话               
 (3)补充按酒店名(简称)、价格上限查询等对话                    
+演示视频如下:            
+https://www.bilibili.com/video/BV1dNUeY7EsY/?vd_source=30acb5331e4f5739ebbad50f7cc6b949            
+https://youtu.be/giK3zvvE6qE              
 
 
 # 2、前期准备工作
