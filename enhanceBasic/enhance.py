@@ -2,6 +2,7 @@
 # 导入 os 模块：用于访问操作系统功能，如路径和文件操作
 # 导入 json 模块：用于解析和生成 JSON 数据格式
 import random, os, json
+from tqdm import tqdm
 # 从 rewrite 模块导入 UtteranceRewriter 类。自定义模块，提供了一个重写语句的功能
 from rewrite import UtteranceRewriter
 # 从 paraphrase 模块导入 Paraphraser 类，用于对输入句子进行复述或重构
@@ -159,7 +160,7 @@ def main(start=0,end=None):
     # 定义输出目录为 enhanced_data，用于存储处理后的对话文件
     output_dir = "enhanced_data"
     # 使用 os.listdir 获取 raw_data 文件夹中的所有文件名并逐一遍历
-    for filename in os.listdir("raw_data"):
+    for filename in tqdm(os.listdir("raw_data")):
         # 将文件名去掉 .json 后缀，并将其转换为整数，作为 id
         # 如果 id 小于 start，跳过当前文件
         # 如果 end 非空且 id 大于等于 end，停止遍历
@@ -170,7 +171,7 @@ def main(start=0,end=None):
             break
 
         # 打印当前正在处理的文件名
-        print(filename)
+        # print(filename)
 
         # 使用 open 以只读模式打开 raw_data 文件夹中的文件，编码为 utf-8
         # 使用 json.load 将文件内容加载为 Python 数据结构（dialog 对象）
@@ -187,7 +188,7 @@ def main(start=0,end=None):
             # 打印“Enhanced [filename]”来记录增强的文件
             if changed:
                 filename = filename.replace(".json", "_.json")
-                print("Enhanced {}".format(filename))
+                # print("Enhanced {}".format(filename))
 
             # 打开 output_dir 文件夹中的对应输出文件，以写模式存储增强后的 dialog，编码为 utf-8
             # 使用 json.dump 将 dialog 转储到文件中，缩进为 4 格，确保非 ASCII 字符正常保存
@@ -195,6 +196,8 @@ def main(start=0,end=None):
             ofp = open(os.path.join(output_dir, filename), 'w', encoding='utf-8')
             json.dump(dialog, ofp, indent=4, ensure_ascii=False)
             ofp.close()
+
+    print('完成生成数据，共写入 enhanced_data文件夹')
 
 
 
