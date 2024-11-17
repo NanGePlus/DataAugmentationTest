@@ -1,16 +1,20 @@
 # 1、业务数据预处理简介        
-本项目提供一种方案思路用于处理FineTuning大模型微调环节数据预处理进行数据增强                         
 轻量化微调流程图                    
 <img src="./001.png" alt="" width="900" />         
+## 1.1 业务数据增强          
 根据业务数据特性进行数据增强，使用的数据为开源的预定酒店场景下的酒店数据库                            
 主要内容:基于原始的数据利用大模型进行数据增强                 
 (1)对酒店设施的描述进行口语化重写             
 (2)补充一定比例的多轮问答和结束语对话               
-(3)补充按酒店名(简称)、价格上限查询等对话                    
+(3)补充按酒店名(简称)、价格上限查询等对话     
 演示视频如下:            
 https://www.bilibili.com/video/BV1dNUeY7EsY/?vd_source=30acb5331e4f5739ebbad50f7cc6b949            
-https://youtu.be/giK3zvvE6qE              
+https://youtu.be/giK3zvvE6qE       
 
+## 1.2 制作数据集及拆分训练集、验证集、测试集
+根据增强后的业务数据进行数据集整理，按照规则处理成特定的数据组织格式                                          
+最后按照8:1:1拆分训练集、验证集、测试集                
+             
 
 # 2、前期准备工作
 ## 2.1 开发环境搭建:anaconda、pycharm
@@ -81,6 +85,14 @@ enhanceMore目录中脚本包含以下功能
 cd enhanceMore                  
 python generate_by_filter_search.py                 
 python generate_by_hotel_name.py                     
+
+## 4.3 制作数据集               
+打开命令行终端，运行如下命令进行测试                       
+cd dataset                                     
+python combine_and_split.py                                        
+
+              
+    
                     
          
 
